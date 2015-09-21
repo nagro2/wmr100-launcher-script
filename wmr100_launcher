@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+#Script to run wmr100 monitor in a loop so it restarts in case of irq crash
+#
+
+i=1
+while [ $i -le 100 ]
+do
+  echo "---------------------------------------"
+  date
+  echo "Starting wmr100 monitor for iteration # $i."
+  date > wmr100-restart-count
+  echo "Starting wmr100 for iteration # $i." >> wmr100-restart-count
+  i=`expr $i + 1`
+  ./wmr100
+done
